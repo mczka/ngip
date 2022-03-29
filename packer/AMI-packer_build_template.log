@@ -1,0 +1,300 @@
+# .\packer.exe build template.json
+amazon-ebs: output will be in this color.
+
+==> amazon-ebs: Prevalidating any provided VPC information
+==> amazon-ebs: Prevalidating AMI Name: rancher-k3os-v0.11.0-amd64-202203281121
+    amazon-ebs: Found Image ID: ami-0da4d94e763cf9fa4
+==> amazon-ebs: Creating temporary keypair: packer_62419a32-c276-13c4-1703-adf12ebd438d
+==> amazon-ebs: Creating temporary security group for this instance: packer_62419a35-251a-19fa-6c5e-646529b23d6d
+==> amazon-ebs: Authorizing access to port 22 from [0.0.0.0/0] in the temporary security groups...
+==> amazon-ebs: Launching a source AWS instance...
+==> amazon-ebs: Adding tags to source instance
+    amazon-ebs: Adding tag: "Name": "Packer Builder"
+    amazon-ebs: Instance ID: i-01888cf6ce380b000
+==> amazon-ebs: Waiting for instance (i-01888cf6ce380b000) to become ready...
+==> amazon-ebs: Using SSH communicator to connect: 13.51.85.78
+==> amazon-ebs: Waiting for SSH to become available...
+==> amazon-ebs: Connected to SSH!
+==> amazon-ebs: Uploading ./config.yaml => /tmp/config.yaml
+==> amazon-ebs: Uploading ./install.sh => /tmp/
+==> amazon-ebs: Provisioning with shell script: C:\Users\czerwmic\AppData\Local\Temp\packer-shell3787929812
+    amazon-ebs: Get:1 http://security.ubuntu.com/ubuntu focal-security InRelease [114 kB]
+    amazon-ebs: Hit:2 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu focal InRelease
+    amazon-ebs: Get:3 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu focal-updates InRelease [114 kB]
+    amazon-ebs: Get:4 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu focal-backports InRelease [108 kB]
+    amazon-ebs: Get:5 http://security.ubuntu.com/ubuntu focal-security/main amd64 Packages [1347 kB]
+    amazon-ebs: Get:6 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu focal/universe amd64 Packages [8628 kB]
+    amazon-ebs: Get:7 http://security.ubuntu.com/ubuntu focal-security/main Translation-en [234 kB]
+    amazon-ebs: Get:8 http://security.ubuntu.com/ubuntu focal-security/main amd64 c-n-f Metadata [9800 B]
+    amazon-ebs: Get:9 http://security.ubuntu.com/ubuntu focal-security/universe amd64 Packages [695 kB]
+    amazon-ebs: Get:10 http://security.ubuntu.com/ubuntu focal-security/universe Translation-en [122 kB]
+    amazon-ebs: Get:11 http://security.ubuntu.com/ubuntu focal-security/universe amd64 c-n-f Metadata [14.1 kB]
+    amazon-ebs: Get:12 http://security.ubuntu.com/ubuntu focal-security/multiverse amd64 Packages [20.7 kB]
+    amazon-ebs: Get:13 http://security.ubuntu.com/ubuntu focal-security/multiverse Translation-en [5196 B]
+    amazon-ebs: Get:14 http://security.ubuntu.com/ubuntu focal-security/multiverse amd64 c-n-f Metadata [500 B]
+    amazon-ebs: Get:15 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu focal/universe Translation-en [5124 kB]
+    amazon-ebs: Get:16 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu focal/universe amd64 c-n-f Metadata [265 kB]
+    amazon-ebs: Get:17 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu focal/multiverse amd64 Packages [144 kB]
+    amazon-ebs: Get:18 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu focal/multiverse Translation-en [104 kB]
+    amazon-ebs: Get:19 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu focal/multiverse amd64 c-n-f Metadata [9136 B]
+    amazon-ebs: Get:20 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 Packages [1674 kB]
+    amazon-ebs: Get:21 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu focal-updates/main Translation-en [316 kB]
+    amazon-ebs: Get:22 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 c-n-f Metadata [14.9 kB]
+    amazon-ebs: Get:23 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu focal-updates/universe amd64 Packages [913 kB]
+    amazon-ebs: Get:24 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu focal-updates/universe Translation-en [203 kB]
+    amazon-ebs: Get:25 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu focal-updates/universe amd64 c-n-f Metadata [20.3 kB]
+    amazon-ebs: Get:26 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu focal-updates/multiverse amd64 Packages [24.4 kB]
+    amazon-ebs: Get:27 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu focal-updates/multiverse Translation-en [7336 B]
+    amazon-ebs: Get:28 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu focal-updates/multiverse amd64 c-n-f Metadata [592 B]
+    amazon-ebs: Get:29 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu focal-backports/main amd64 Packages [42.2 kB]
+    amazon-ebs: Get:30 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu focal-backports/main Translation-en [10.1 kB]
+    amazon-ebs: Get:31 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu focal-backports/main amd64 c-n-f Metadata [864 B]
+    amazon-ebs: Get:32 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu focal-backports/restricted amd64 c-n-f Metadata [116 B]
+    amazon-ebs: Get:33 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu focal-backports/universe amd64 Packages [22.7 kB]
+    amazon-ebs: Get:34 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu focal-backports/universe Translation-en [15.4 kB]
+    amazon-ebs: Get:35 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu focal-backports/universe amd64 c-n-f Metadata [804 B]
+    amazon-ebs: Get:36 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu focal-backports/multiverse amd64 c-n-f Metadata [116 B]
+    amazon-ebs: Fetched 20.3 MB in 3s (6545 kB/s)
+    amazon-ebs: Reading package lists...
+    amazon-ebs: Reading package lists...
+    amazon-ebs: Building dependency tree...
+    amazon-ebs: Reading state information...
+    amazon-ebs: dosfstools is already the newest version (4.1-2).
+    amazon-ebs: dosfstools set to manually installed.
+    amazon-ebs: parted is already the newest version (3.3-4ubuntu0.20.04.1).
+    amazon-ebs: parted set to manually installed.
+    amazon-ebs: 0 upgraded, 0 newly installed, 0 to remove and 8 not upgraded.
+==> amazon-ebs: + set -e
+==> amazon-ebs: + PROG=/tmp/install.sh
+==> amazon-ebs: + PROGS='dd curl mkfs.ext4 mkfs.vfat fatlabel parted partprobe grub-install'
+==> amazon-ebs: + DISTRO=/run/k3os/iso
+==> amazon-ebs: + '[' '' = true ']'
+==> amazon-ebs: + '[' 10 -gt 0 ']'
+==> amazon-ebs: + case $1 in
+==> amazon-ebs: + K3OS_INSTALL_TAKE_OVER=true
+==> amazon-ebs: + shift 1
+==> amazon-ebs: + '[' 9 -gt 0 ']'
+==> amazon-ebs: + case $1 in
+==> amazon-ebs: + K3OS_INSTALL_POWER_OFF=true
+==> amazon-ebs: + shift 1
+==> amazon-ebs: + '[' 8 -gt 0 ']'
+==> amazon-ebs: + case $1 in
+==> amazon-ebs: + set -x
+==> amazon-ebs: + K3OS_INSTALL_DEBUG=true
+==> amazon-ebs: + shift 1
+==> amazon-ebs: + '[' 7 -gt 0 ']'
+==> amazon-ebs: + case $1 in
+==> amazon-ebs: + shift 1
+==> amazon-ebs: + K3OS_INSTALL_TTY=ttyS0
+==> amazon-ebs: + shift 1
+==> amazon-ebs: + '[' 5 -gt 0 ']'
+==> amazon-ebs: + case $1 in
+==> amazon-ebs: + shift 1
+==> amazon-ebs: + K3OS_INSTALL_CONFIG_URL=/tmp/config.yaml
+==> amazon-ebs: + shift 1
+==> amazon-ebs: + '[' 3 -gt 0 ']'
+==> amazon-ebs: + case $1 in
+==> amazon-ebs: + K3OS_INSTALL_NO_FORMAT=true
+==> amazon-ebs: + shift 1
+==> amazon-ebs: + '[' 2 -gt 0 ']'
+==> amazon-ebs: + case $1 in
+==> amazon-ebs: + '[' 2 -gt 2 ']'
+==> amazon-ebs: + INTERACTIVE=true
+==> amazon-ebs: + K3OS_INSTALL_DEVICE=/dev/nvme0n1p1
+==> amazon-ebs: + K3OS_INSTALL_ISO_URL=https://github.com/rancher/k3os/releases/download/v0.11.0/k3os-amd64.iso
+==> amazon-ebs: + break
+==> amazon-ebs: + '[' -e /etc/environment ']'
+==> amazon-ebs: + source /etc/environment
+==> amazon-ebs: ++ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+==> amazon-ebs: + '[' -e /etc/os-release ']'
+==> amazon-ebs: + source /etc/os-release
+==> amazon-ebs: ++ NAME=Ubuntu
+==> amazon-ebs: ++ VERSION='20.04.4 LTS (Focal Fossa)'
+==> amazon-ebs: ++ ID=ubuntu
+==> amazon-ebs: ++ ID_LIKE=debian
+==> amazon-ebs: ++ PRETTY_NAME='Ubuntu 20.04.4 LTS'
+==> amazon-ebs: ++ VERSION_ID=20.04
+==> amazon-ebs: ++ HOME_URL=https://www.ubuntu.com/
+==> amazon-ebs: ++ SUPPORT_URL=https://help.ubuntu.com/
+==> amazon-ebs: ++ BUG_REPORT_URL=https://bugs.launchpad.net/ubuntu/
+==> amazon-ebs: ++ PRIVACY_POLICY_URL=https://www.ubuntu.com/legal/terms-and-policies/privacy-policy
+==> amazon-ebs: ++ VERSION_CODENAME=focal
+==> amazon-ebs: ++ UBUNTU_CODENAME=focal
+==> amazon-ebs: + '[' -z https://github.com/rancher/k3os/releases/download/v0.11.0/k3os-amd64.iso ']'
+==> amazon-ebs: + '[' -z /dev/nvme0n1p1 ']'
+==> amazon-ebs: + validate_progs
+==> amazon-ebs: + for i in $PROGS
+==> amazon-ebs: ++ which dd
+==> amazon-ebs: + '[' '!' -x /usr/bin/dd ']'
+==> amazon-ebs: + for i in $PROGS
+==> amazon-ebs: ++ which curl
+==> amazon-ebs: + '[' '!' -x /usr/bin/curl ']'
+==> amazon-ebs: + for i in $PROGS
+==> amazon-ebs: ++ which mkfs.ext4
+==> amazon-ebs: + '[' '!' -x /usr/sbin/mkfs.ext4 ']'
+==> amazon-ebs: + for i in $PROGS
+==> amazon-ebs: ++ which mkfs.vfat
+==> amazon-ebs: + '[' '!' -x /usr/sbin/mkfs.vfat ']'
+==> amazon-ebs: + for i in $PROGS
+==> amazon-ebs: ++ which fatlabel
+==> amazon-ebs: + '[' '!' -x /usr/sbin/fatlabel ']'
+==> amazon-ebs: + for i in $PROGS
+==> amazon-ebs: ++ which parted
+==> amazon-ebs: + '[' '!' -x /usr/sbin/parted ']'
+==> amazon-ebs: + for i in $PROGS
+==> amazon-ebs: ++ which partprobe
+==> amazon-ebs: + '[' '!' -x /usr/sbin/partprobe ']'
+==> amazon-ebs: + for i in $PROGS
+==> amazon-ebs: ++ which grub-install
+==> amazon-ebs: + '[' '!' -x /usr/sbin/grub-install ']'
+==> amazon-ebs: + '[' -n '' ']'
+==> amazon-ebs: + validate_device
+==> amazon-ebs: + DEVICE=/dev/nvme0n1p1
+==> amazon-ebs: + '[' '!' -b /dev/nvme0n1p1 ']'
+==> amazon-ebs: + trap cleanup exit
+==> amazon-ebs: + get_iso
+==> amazon-ebs: ++ blkid -L K3OS
+==> amazon-ebs: ++ true
+==> amazon-ebs: + ISO_DEVICE=
+==> amazon-ebs: + '[' -z '' ']'
+==> amazon-ebs: ++ lsblk -o NAME,TYPE -n
+==> amazon-ebs: ++ awk '{print $1}'
+==> amazon-ebs: ++ grep -w disk
+==> amazon-ebs: + for i in $(lsblk -o NAME,TYPE -n | grep -w disk | awk '{print $1}')
+==> amazon-ebs: + mkdir -p /run/k3os/iso
+==> amazon-ebs: + mount -o ro /dev/nvme0n1 /run/k3os/iso
+==> amazon-ebs: mount: /run/k3os/iso: /dev/nvme0n1 already mounted or mount point busy.
+==> amazon-ebs: + '[' -z '' ']'
+==> amazon-ebs: + '[' -n https://github.com/rancher/k3os/releases/download/v0.11.0/k3os-amd64.iso ']'
+==> amazon-ebs: ++ mktemp k3os.XXXXXXXX.iso
+==> amazon-ebs: + TEMP_FILE=k3os.rfH8W6nT.iso
+==> amazon-ebs: + get_url https://github.com/rancher/k3os/releases/download/v0.11.0/k3os-amd64.iso k3os.rfH8W6nT.iso
+==> amazon-ebs: + FROM=https://github.com/rancher/k3os/releases/download/v0.11.0/k3os-amd64.iso
+==> amazon-ebs: + TO=k3os.rfH8W6nT.iso
+==> amazon-ebs: + case $FROM in
+==> amazon-ebs: + n=0
+==> amazon-ebs: + attempts=5
+==> amazon-ebs: + '[' 0 -ge 5 ']'
+==> amazon-ebs: + curl -o k3os.rfH8W6nT.iso -fL https://github.com/rancher/k3os/releases/download/v0.11.0/k3os-amd64.iso
+==> amazon-ebs:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+==> amazon-ebs:                                  Dload  Upload   Total   Spent    Left  Speed
+==> amazon-ebs: 100   653  100   653    0     0   2687      0 --:--:-- --:--:-- --:--:--  2698
+==> amazon-ebs: 100  509M  100  509M    0     0  8171k      0  0:01:03  0:01:03 --:--:-- 8924k
+==> amazon-ebs: + break
+==> amazon-ebs: ++ losetup --show -f k3os.rfH8W6nT.iso
+==> amazon-ebs: + ISO_DEVICE=/dev/loop5
+==> amazon-ebs: + rm -f k3os.rfH8W6nT.iso
+==> amazon-ebs: + '[' -z /dev/loop5 ']'
+    amazon-ebs: tune2fs 1.45.5 (07-Jan-2020)
+==> amazon-ebs: + setup_style
+==> amazon-ebs: + '[' '' = true ']'
+==> amazon-ebs: + '[' -e /sys/firmware/efi ']'
+==> amazon-ebs: + PARTTABLE=msdos
+==> amazon-ebs: + BOOTFLAG=boot
+==> amazon-ebs: + do_format
+==> amazon-ebs: + '[' true = true ']'
+==> amazon-ebs: ++ blkid -L K3OS_STATE
+==> amazon-ebs: ++ true
+==> amazon-ebs: + STATE=
+==> amazon-ebs: + '[' -z '' ']'
+==> amazon-ebs: + '[' -n /dev/nvme0n1p1 ']'
+==> amazon-ebs: + tune2fs -L K3OS_STATE /dev/nvme0n1p1
+==> amazon-ebs: ++ blkid -L K3OS_STATE
+==> amazon-ebs: + STATE=/dev/nvme0n1p1
+==> amazon-ebs: + return 0
+==> amazon-ebs: + do_mount
+==> amazon-ebs: + TARGET=/run/k3os/target
+==> amazon-ebs: + mkdir -p /run/k3os/target
+==> amazon-ebs: + mount /dev/nvme0n1p1 /run/k3os/target
+==> amazon-ebs: + mkdir -p /run/k3os/target/boot
+==> amazon-ebs: + '[' -n '' ']'
+==> amazon-ebs: + mkdir -p /run/k3os/iso
+==> amazon-ebs: + mount -o ro /dev/loop5 /run/k3os/iso
+==> amazon-ebs: + do_copy
+==> amazon-ebs: + tar xvf - -C /run/k3os/target
+==> amazon-ebs: + tar cf - -C /run/k3os/iso k3os
+    amazon-ebs: k3os/
+    amazon-ebs: k3os/system/
+    amazon-ebs: k3os/system/config.yaml
+    amazon-ebs: k3os/system/k3os/
+    amazon-ebs: k3os/system/k3os/current
+    amazon-ebs: k3os/system/k3os/v0.11.0/
+    amazon-ebs: k3os/system/k3os/v0.11.0/k3os
+    amazon-ebs: k3os/system/k3os/v0.11.0/k3os-install.sh
+    amazon-ebs: k3os/system/k3s/
+    amazon-ebs: k3os/system/k3s/current
+    amazon-ebs: k3os/system/k3s/v1.18.6+k3s1/
+    amazon-ebs: k3os/system/k3s/v1.18.6+k3s1/k3s
+    amazon-ebs: k3os/system/k3s/v1.18.6+k3s1/k3s-install.sh
+    amazon-ebs: k3os/system/kernel/
+    amazon-ebs: k3os/system/kernel/5.4.0-37-generic/
+    amazon-ebs: k3os/system/kernel/5.4.0-37-generic/initrd
+    amazon-ebs: k3os/system/kernel/5.4.0-37-generic/kernel.squashfs
+    amazon-ebs: k3os/system/kernel/current
+==> amazon-ebs: + '[' -n '' ']'
+==> amazon-ebs: + '[' -n /tmp/config.yaml ']'
+==> amazon-ebs: + get_url /tmp/config.yaml /run/k3os/target/k3os/system/config.yaml
+==> amazon-ebs: + FROM=/tmp/config.yaml
+==> amazon-ebs: + TO=/run/k3os/target/k3os/system/config.yaml
+==> amazon-ebs: + case $FROM in
+==> amazon-ebs: + cp -f /tmp/config.yaml /run/k3os/target/k3os/system/config.yaml
+==> amazon-ebs: + chmod 600 /run/k3os/target/k3os/system/config.yaml
+==> amazon-ebs: + '[' true = true ']'
+==> amazon-ebs: + touch /run/k3os/target/k3os/system/takeover
+==> amazon-ebs: + '[' true = true ']'
+==> amazon-ebs: + touch /run/k3os/target/k3os/system/poweroff
+==> amazon-ebs: + install_grub
+==> amazon-ebs: + '[' true ']'
+==> amazon-ebs: + GRUB_DEBUG=k3os.debug
+==> amazon-ebs: + mkdir -p /run/k3os/target/boot/grub
+==> amazon-ebs: + cat
+==> amazon-ebs: + '[' -z ttyS0 ']'
+==> amazon-ebs: + TTY=ttyS0
+==> amazon-ebs: + '[' -e /dev/ttyS0 ']'
+==> amazon-ebs: + '[' ttyS0 '!=' tty1 ']'
+==> amazon-ebs: + '[' ttyS0 '!=' console ']'
+==> amazon-ebs: + '[' -n ttyS0 ']'
+==> amazon-ebs: + sed -i 's!console=tty1!console=tty1 console=ttyS0!g' /run/k3os/target/boot/grub/grub.cfg
+==> amazon-ebs: + '[' true = true ']'
+==> amazon-ebs: + return 0
+==> amazon-ebs: + create_opt
+==> amazon-ebs: + mkdir -p /run/k3os/target/k3os/data/opt
+==> amazon-ebs: + '[' -n true ']'
+==> amazon-ebs: + exit 0
+==> amazon-ebs: + cleanup
+==> amazon-ebs: + EXIT=0
+==> amazon-ebs: + cleanup2
+==> amazon-ebs: + return 0
+==> amazon-ebs: Provisioning with shell script: C:\Users\czerwmic\AppData\Local\Temp\packer-shell2206243496
+==> amazon-ebs: + sudo systemd-run --on-active=3 --timer-property=AccuracySec=100ms sudo systemctl reboot --force --force
+==> amazon-ebs: Running timer as unit: run-r2b55eeedad0c4d9cb2625cc59d0e884d.timer
+==> amazon-ebs: Will run service as unit: run-r2b55eeedad0c4d9cb2625cc59d0e884d.service
+==> amazon-ebs: + sync
+    amazon-ebs: Rebooting
+==> amazon-ebs: + echo Rebooting
+==> amazon-ebs: Pausing 3m0s after this provisioner...
+==> amazon-ebs: Stopping the source instance...
+    amazon-ebs: Stopping instance
+==> amazon-ebs: Waiting for the instance to stop...
+==> amazon-ebs: Creating AMI rancher-k3os-v0.11.0-amd64-202203281121 from instance i-01888cf6ce380b000
+    amazon-ebs: AMI: ami-0228501376d62a958
+==> amazon-ebs: Waiting for AMI to become ready...
+==> amazon-ebs: Skipping Enable AMI deprecation...
+==> amazon-ebs: Adding tags to AMI (ami-0228501376d62a958)...
+==> amazon-ebs: Tagging snapshot: snap-065b61b9efa57e9e3
+==> amazon-ebs: Creating AMI tags
+    amazon-ebs: Adding tag: "Name": "k3OS"
+    amazon-ebs: Adding tag: "Version": "v0.11.0"
+==> amazon-ebs: Creating snapshot tags
+==> amazon-ebs: Terminating the source AWS instance...
+==> amazon-ebs: Cleaning up any extra volumes...
+==> amazon-ebs: No volumes to clean up, skipping
+==> amazon-ebs: Deleting temporary security group...
+==> amazon-ebs: Deleting temporary keypair...
+Build 'amazon-ebs' finished after 8 minutes 18 seconds.
+
+==> Wait completed after 8 minutes 18 seconds
+
+==> Builds finished. The artifacts of successful builds are:
+--> amazon-ebs: AMIs were created:
+eu-north-1: ami-0228501376d62a958
