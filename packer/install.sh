@@ -1,1 +1,1 @@
-https://github.com/rancher/k3os/blob/master/install.sh
+https://raw.githubusercontent.com/rancher/k3os/master/install.sh
