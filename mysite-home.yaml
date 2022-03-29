@@ -47,7 +47,7 @@ spec:
   entryPoints:
     - web
   routes:
-  - match: Path(`/`)
+  - match: Host(`rancher.regnumtuum.com`) && Path(`/`)
     kind: Rule
     services:
     - name: mysite-home-service
