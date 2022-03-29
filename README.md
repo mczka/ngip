@@ -13,13 +13,16 @@ k3os:
   datasource: aws
 
 wget https://raw.githubusercontent.com/rancher/k3os/master/install.sh
+
 chmod +x install.sh
+
 sudo ./install.sh --takeover --debug --tty ttyS0 --config /tmp/config.yaml --no-format /dev/nvme0n1p1 https://github.com/rancher/k3os/releases/download/v0.21.5-k3s2r1/k3os-amd64.iso
 
 #######################################
 
 wget https://raw.githubusercontent.com/mczka/ngip/mysite-home.yaml
 wget https://raw.githubusercontent.com/mczka/ngip/index.html
+
 kubectl create configmap mysite-home-html --from-file index.html
 kubectl apply -f mysite-home.yaml
 
