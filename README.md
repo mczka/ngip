@@ -1,10 +1,13 @@
-AWS EC2 with k3OS 
+# AWS EC2 with k3OS 
+
 version v0.21.5+k3s2/kernel 5.4.0-88 + alpine userspace
 
 https://github.com/rancher/k3os/releases/download/v0.21.5-k3s2r1/k3os-amd64.iso
 
 #######################################
-takeover orginal ubuntu-focal-20.04 OS:
+
+# takeover orginal ubuntu-focal-20.04 OS:
+
 vi /tmp/config.yaml
 k3os:
   datasource: aws
@@ -14,6 +17,7 @@ chmod +x install.sh
 sudo ./install.sh --takeover --debug --tty ttyS0 --config /tmp/config.yaml --no-format /dev/nvme0n1p1 https://github.com/rancher/k3os/releases/download/v0.21.5-k3s2r1/k3os-amd64.iso
 
 #######################################
+
 wget https://raw.githubusercontent.com/mczka/ngip/mysite-home.yaml
 wget https://raw.githubusercontent.com/mczka/ngip/index.html
 kubectl create configmap mysite-home-html --from-file index.html
