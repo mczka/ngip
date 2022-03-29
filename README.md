@@ -31,4 +31,8 @@ kubectl apply -f mysite-home.yaml
 
 # test 
 
+kubectl get configmap
+
+kubectl get pods
+
 http://rancher.regnumtuum.com
