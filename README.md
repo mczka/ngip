@@ -1,96 +1,22 @@
-# ngip concept
-the Next Generation of Internet Protocol
+AWS EC2 with k3OS 
+version v0.21.5+k3s2/kernel 5.4.0-88 + alpine userspace
 
-What if this Western civilization falls?
-And all the Intellectual Property will go in the dust.
+https://github.com/rancher/k3os/releases/download/v0.21.5-k3s2r1/k3os-amd64.iso
 
-Let's make a new protocol for communication from the beginning!
+#######################################
+takeover orginal ubuntu-focal-20.04 OS:
+vi /tmp/config.yaml
+k3os:
+  datasource: aws
 
-Background:
-IPv4 deplection now and after 20 year of RFC ipv6 has not been transitioned yet
+wget https://raw.githubusercontent.com/rancher/k3os/master/install.sh
+chmod +x install.sh
+sudo ./install.sh --takeover --debug --tty ttyS0 --config /tmp/config.yaml --no-format /dev/nvme0n1p1 https://github.com/rancher/k3os/releases/download/v0.21.5-k3s2r1/k3os-amd64.iso
 
-Requirements:
-- exascale/HPC
-- flat network, easy to adopt into the Cloud, virt world
-- easy integrade into PCI express bus or ng PCIe
-- multi vCPU aware
-- ECMP
-- BGP lw as dynamic routing
+#######################################
+wget https://raw.githubusercontent.com/mczka/ngip/mysite-home.yaml
+wget https://raw.githubusercontent.com/mczka/ngip/index.html
+kubectl create configmap mysite-home-html --from-file index.html
+kubectl apply -f mysite-home.yaml
 
-Descriptions of ngip
-- Layer 1: use ethernet frame (ethernet is everywhere) more than 64B we can use in protocol header
-- Layer 234 merge into one header <IPmtu, HL, FLAG, CRC FLAG, interfaceID, PL, dst IP, src IP,dst tag, src tag, payload>
-
-
- +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
- |               |               |                               |
- +      MTU      +  Hop Limit    +              FLAG             +
- |               |               |                               |
- +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
- |                               |                               |
- +           FLAG/CRC            +         Payload Length        +
- |                               |                               |
- +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
- |                                                               |
- +                                                               +
- |                                                               |
- +                          Interface ID                         +
- |                                                               |
- +                                                               +
- |                                                               |
- +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
- |                                                               |
- +                                                               +
- |                                                               |
- +                      Destination Address                      +
- |                                                               |
- +                                                               +
- |                                                               |
- +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
- |                                                               |
- +                                                               +
- |                                                               |
- +                         Source Address                        +
- |                                                               |
- +                                                               +
- |                                                               |
- +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
- |                                                               |
- +                                                               +
- |                                                               |
- +                        Destination Tag                        +
- |                                                               |
- +                                                               +
- |                                                               |
- +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
- |                                                               |
- +                                                               +
- |                                                               |
- +                           Source Tag                          +
- |                                                               |
- +                                                               +
- |                                                               |
- +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
-
-
-IPmtu - the MTU maximum.
-HL -  Hop Limit 16-bit unsigned integer. Decremented by 1 by each node that forwards the packet. The packet is discarded if Hop Limit is decremented to zero.
-FLAG - flags
-CRC FLAG - error correction ?
-interfaceID
-PL - Payload Length 32-bit unsigned integer. Length of the ngIP payload in bytes, the rest of the packet following this ngIP header.
-dst IP - 128-bit address of the recipient of the packet.
-src IP - 128-bit address of the originator of the packet.
-dst tag - 128-bit unsigned integer.
-src tag - 128-bit unsigned integer.
-payload
-
-HL - Hop Limit
-if packet forwarding then HL=HL-1
-if HL=0, drop packet.
-if IPng:FLAG = LL then HL=1.
-
-flags
-LL - link local
-ST - stack IP
+http://rancher.regnumtuum.com
