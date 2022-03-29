@@ -1,0 +1,179 @@
+ip-172-31-43-22 [~]$ sudo ./install.sh --takeover --debug --tty ttyS0 --config /tmp/config.yaml --no-format /dev/nvme0n1p1 https://github.com/rancher/k3os/releases/download/v0.22.2-k3s2r0/k3os-amd64.iso
++ K3OS_INSTALL_DEBUG=true
++ shift 1
++ '[' 7 -gt 0 ']'
++ case $1 in
++ shift 1
++ K3OS_INSTALL_TTY=ttyS0
++ shift 1
++ '[' 5 -gt 0 ']'
++ case $1 in
++ shift 1
++ K3OS_INSTALL_CONFIG_URL=/tmp/config.yaml
++ shift 1
++ '[' 3 -gt 0 ']'
++ case $1 in
++ K3OS_INSTALL_NO_FORMAT=true
++ shift 1
++ '[' 2 -gt 0 ']'
++ case $1 in
++ '[' 2 -gt 2 ']'
++ INTERACTIVE=true
++ K3OS_INSTALL_DEVICE=/dev/nvme0n1p1
++ K3OS_INSTALL_ISO_URL=https://github.com/rancher/k3os/releases/download/v0.22.2-k3s2r0/k3os-amd64.iso
++ break
++ '[' -e /etc/environment ']'
++ source /etc/environment
+++ K3S_KUBECONFIG_MODE=0644
++ '[' -e /etc/os-release ']'
++ source /etc/os-release
+++ NAME=k3OS
+++ VERSION='k3OS v0.21.5-k3s2r1'
+++ ID=k3os
+++ ID_LIKE=alpine
+++ PRETTY_NAME='k3OS v0.21.5-k3s2r1'
+++ VERSION_ID=v0.21.5-k3s2r1
+++ HOME_URL=https://k3os.io/
+++ SUPPORT_URL=https://k3os.io/
+++ BUG_REPORT_URL=https://github.com/rancher/k3os/issues
+++ ISO_URL=https://github.com/rancher/k3os/releases/download/v0.21.5-k3s2r1/k3os-amd64.iso
++ '[' -z https://github.com/rancher/k3os/releases/download/v0.22.2-k3s2r0/k3os-amd64.iso ']'
++ '[' -z /dev/nvme0n1p1 ']'
++ validate_progs
++ for i in $PROGS
+++ which dd
++ '[' '!' -x /usr/bin/dd ']'
++ for i in $PROGS
+++ which curl
++ '[' '!' -x /usr/bin/curl ']'
++ for i in $PROGS
+++ which mkfs.ext4
++ '[' '!' -x /usr/sbin/mkfs.ext4 ']'
++ for i in $PROGS
+++ which mkfs.vfat
++ '[' '!' -x /usr/sbin/mkfs.vfat ']'
++ for i in $PROGS
+++ which fatlabel
++ '[' '!' -x /usr/sbin/fatlabel ']'
++ for i in $PROGS
+++ which parted
++ '[' '!' -x /usr/sbin/parted ']'
++ for i in $PROGS
+++ which partprobe
++ '[' '!' -x /usr/sbin/partprobe ']'
++ for i in $PROGS
+++ which grub-install
++ '[' '!' -x /usr/sbin/grub-install ']'
++ '[' -n '' ']'
++ validate_device
++ DEVICE=/dev/nvme0n1p1
++ '[' '!' -b /dev/nvme0n1p1 ']'
++ trap cleanup exit
++ get_iso
+++ blkid -L K3OS
+++ true
++ ISO_DEVICE=
++ '[' -z '' ']'
+++ lsblk -o NAME,TYPE -n
+++ grep -w disk
+++ awk '{print $1}'
++ for i in $(lsblk -o NAME,TYPE -n | grep -w disk | awk '{print $1}')
++ mkdir -p /run/k3os/iso
++ mount -o ro /dev/nvme0n1 /run/k3os/iso
+mount: /run/k3os/iso: /dev/nvme0n1 already mounted or mount point busy.
++ '[' -z '' ']'
++ '[' -n https://github.com/rancher/k3os/releases/download/v0.22.2-k3s2r0/k3os-amd64.iso ']'
+++ mktemp k3os.XXXXXXXX.iso
++ TEMP_FILE=k3os.h5lk1vUJ.iso
++ get_url https://github.com/rancher/k3os/releases/download/v0.22.2-k3s2r0/k3os-amd64.iso k3os.h5lk1vUJ.iso
++ FROM=https://github.com/rancher/k3os/releases/download/v0.22.2-k3s2r0/k3os-amd64.iso
++ TO=k3os.h5lk1vUJ.iso
++ case $FROM in
++ n=0
++ attempts=5
++ '[' 0 -ge 5 ']'
++ curl -o k3os.h5lk1vUJ.iso -fL https://github.com/rancher/k3os/releases/download/v0.22.2-k3s2r0/k3os-amd64.iso
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   653  100   653    0     0   2488      0 --:--:-- --:--:-- --:--:--  2492
+100  516M  100  516M    0     0  19.7M      0  0:00:26  0:00:26 --:--:-- 17.9M
++ break
+++ losetup --show -f k3os.h5lk1vUJ.iso
++ ISO_DEVICE=/dev/loop0
++ rm -f k3os.h5lk1vUJ.iso
++ '[' -z /dev/loop0 ']'
++ setup_style
++ '[' '' = true ']'
++ '[' -e /sys/firmware/efi ']'
++ PARTTABLE=msdos
++ BOOTFLAG=boot
++ do_format
++ '[' true = true ']'
+++ blkid -L K3OS_STATE
++ STATE=/dev/nvme0n1p1
++ '[' -z /dev/nvme0n1p1 ']'
++ return 0
++ do_mount
++ TARGET=/run/k3os/target
++ mkdir -p /run/k3os/target
++ mount /dev/nvme0n1p1 /run/k3os/target
++ mkdir -p /run/k3os/target/boot
++ '[' -n '' ']'
++ mkdir -p /run/k3os/iso
++ mount -o ro /dev/loop0 /run/k3os/iso
++ do_copy
++ tar xvf - -C /run/k3os/target
++ tar cf - -C /run/k3os/iso k3os
+k3os/
+k3os/system/
+k3os/system/config.yaml
+k3os/system/k3os/
+k3os/system/k3os/current
+k3os/system/k3os/v0.22.2-k3s2r0/
+k3os/system/k3os/v0.22.2-k3s2r0/k3os
+k3os/system/k3os/v0.22.2-k3s2r0/k3os-install.sh
+k3os/system/k3s/
+k3os/system/k3s/current
+k3os/system/k3s/v1.22.2+k3s2/
+k3os/system/k3s/v1.22.2+k3s2/k3s
+k3os/system/k3s/v1.22.2+k3s2/k3s-install.sh
+k3os/system/kernel/
+k3os/system/kernel/5.4.0-88-generic/
+k3os/system/kernel/5.4.0-88-generic/initrd
+k3os/system/kernel/5.4.0-88-generic/kernel.squashfs
+k3os/system/kernel/current
++ '[' -n '' ']'
++ '[' -n /tmp/config.yaml ']'
++ get_url /tmp/config.yaml /run/k3os/target/k3os/system/config.yaml
++ FROM=/tmp/config.yaml
++ TO=/run/k3os/target/k3os/system/config.yaml
++ case $FROM in
++ cp -f /tmp/config.yaml /run/k3os/target/k3os/system/config.yaml
++ chmod 600 /run/k3os/target/k3os/system/config.yaml
++ '[' true = true ']'
++ touch /run/k3os/target/k3os/system/takeover
++ '[' '' = true ']'
++ grep -q k3os.install.power_off=true /proc/cmdline
++ install_grub
++ '[' true ']'
++ GRUB_DEBUG=k3os.debug
++ mkdir -p /run/k3os/target/boot/grub
++ cat
++ '[' -z ttyS0 ']'
++ TTY=ttyS0
++ '[' -e /dev/ttyS0 ']'
++ '[' ttyS0 '!=' tty1 ']'
++ '[' ttyS0 '!=' console ']'
++ '[' -n ttyS0 ']'
++ sed -i 's!console=tty1!console=tty1 console=ttyS0!g' /run/k3os/target/boot/grub/grub.cfg
++ '[' true = true ']'
++ return 0
++ create_opt
++ mkdir -p /run/k3os/target/k3os/data/opt
++ '[' -n true ']'
++ exit 0
++ cleanup
++ EXIT=0
++ cleanup2
++ return 0
+ip-172-31-43-22 [~]$
