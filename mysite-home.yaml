@@ -1,0 +1,54 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysite-home
+  labels:
+    app: mysite-home
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysite-home
+  template:
+    metadata:
+      labels:
+        app: mysite-home
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: html-volume
+          mountPath: /usr/share/nginx/html
+      volumes:
+      - name: html-volume
+        configMap:
+          name: mysite-home-html
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysite-home-service
+spec:
+  selector:
+    app: mysite-home
+  ports:
+    - protocol: TCP
+      port: 80
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: mysite-home-ingress
+spec:
+  entryPoints:
+    - web
+  routes:
+  - match: Path(`/`)
+    kind: Rule
+    services:
+    - name: mysite-home-service
+      port: 80
