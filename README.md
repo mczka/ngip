@@ -4,7 +4,6 @@ version v0.21.5+k3s2/kernel 5.4.0-88 + alpine userspace
 
 https://github.com/rancher/k3os/releases/download/v0.21.5-k3s2r1/k3os-amd64.iso
 
-#######################################
 
 # takeover orginal ubuntu-focal-20.04 OS:
 
@@ -18,7 +17,7 @@ chmod +x install.sh
 
 sudo ./install.sh --takeover --debug --tty ttyS0 --config /tmp/config.yaml --no-format /dev/nvme0n1p1 https://github.com/rancher/k3os/releases/download/v0.21.5-k3s2r1/k3os-amd64.iso
 
-#######################################
+# setup k3s
 
 wget https://raw.githubusercontent.com/mczka/ngip/master/mysite-home.yaml
 
@@ -27,5 +26,7 @@ wget https://raw.githubusercontent.com/mczka/ngip/master/index.html
 kubectl create configmap mysite-home-html --from-file index.html
 
 kubectl apply -f mysite-home.yaml
+
+# test 
 
 http://rancher.regnumtuum.com
