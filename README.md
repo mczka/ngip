@@ -1,3 +1,5 @@
+https://github.com/rancher/k3os
+
 # AWS EC2 with k3OS 
 
 version v0.21.5+k3s2/kernel 5.4.0-88 + alpine userspace
