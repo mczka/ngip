@@ -23,7 +23,7 @@ sudo ./install.sh --takeover --debug --tty ttyS0 --config /tmp/config.yaml --no-
 
 wget https://raw.githubusercontent.com/mczka/ngip/master/mysite-home.yaml
 
-wget https://raw.githubusercontent.com/mczka/ngip/master/index.html
+wget https://raw.githubusercontent.com/mczka/ngip/master/html-home/index.html
 
 kubectl create configmap mysite-home-html --from-file index.html
 
