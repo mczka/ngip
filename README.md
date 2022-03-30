@@ -38,16 +38,22 @@ wget https://raw.githubusercontent.com/mczka/ngip/master/html-iaas/index.html
 
 wget https://raw.githubusercontent.com/mczka/ngip/master/html-iaas/iaas.svg
 
+kubectl create configmap mysite-iaas-html --from-file html
+
+kubectl apply -f mysite-iaas.yaml
+
+
 # test 
 
 kubectl get configmap
 
 kubectl get pods
 
+kubectl get ingressroute
+
+
 http://rancher.regnumtuum.com
 
-
 http://ip.regnumtuum.com
-
 
 http://ip.regnumtuum.com/iaas
