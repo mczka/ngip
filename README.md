@@ -29,6 +29,15 @@ kubectl create configmap mysite-home-html --from-file index.html
 
 kubectl apply -f mysite-home.yaml
 
+wget https://raw.githubusercontent.com/mczka/ngip/master/mysite-iaas.yaml
+
+mkdir html;
+cd html
+
+wget https://raw.githubusercontent.com/mczka/ngip/master/html-iaas/index.html
+
+wget https://raw.githubusercontent.com/mczka/ngip/master/html-iaas/iaas.svg
+
 # test 
 
 kubectl get configmap
@@ -36,3 +45,9 @@ kubectl get configmap
 kubectl get pods
 
 http://rancher.regnumtuum.com
+
+
+http://ip.regnumtuum.com
+
+
+http://ip.regnumtuum.com/iaas
