@@ -2,6 +2,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  name: mysite-home-ip
+  labels:
+    app: mysite-home-ip
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysite-home-ip
+  template:
+    metadata:
+      labels:
+        app: mysite-home-ip
+    spec:
+      containers:
+      - name: rancher-hello-world
+        image: rancher/hello-world
+        ports:
+        - containerPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
   name: mysite-iaas
   labels:
     app: mysite-iaas
@@ -39,21 +61,37 @@ spec:
     - protocol: TCP
       port: 80
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysite-home-ip-service
+spec:
+  selector:
+    app: mysite-home-ip
+  ports:
+    - protocol: TCP
+      port: 80
+---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: mysite-iaas-ingress
+  name: mysite-home-ip-ingress
 spec:
   entryPoints:
     - web
   routes:
-  - match: Host(`ip.regnumtuum.com`) && PathPrefix(`/iaas`)
+    - match: Host(`ip.regnumtuum.com`) && Path(`/`)
+    kind: Rule
+    services:
+    - name: mysite-home-ip-service
+      port: 80
+    - match: Host(`ip.regnumtuum.com`) && PathPrefix(`/iaas`)
     kind: Rule
     services:
     - name: mysite-iaas-service
       port: 80
     middlewares:
-      - name: mysite-iaas-stripprefix
+    - name: mysite-iaas-stripprefix
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
